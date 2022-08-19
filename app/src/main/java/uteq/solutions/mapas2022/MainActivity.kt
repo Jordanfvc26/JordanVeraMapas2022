@@ -62,11 +62,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMapClic
         //Agregar un marcador
         mMap.addMarker(MarkerOptions().position(point).title("Lugar " + puntos.size));
 
+        //Click del marcador
         mMap.setOnMarkerClickListener(this)
 
 
         //Para capturar los puntos y hacer un cuadro que encierre aquello
         puntos.add(point)
+
         if(puntos.size==4){
             var lineas:PolylineOptions = PolylineOptions()
             for(punto:LatLng in puntos)
@@ -79,8 +81,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMapClic
         }
     }
 
+    //Para eliminar el marcador
     override fun onMarkerClick(marker: Marker): Boolean {
         marker.remove()
         return true
+    }
+
+    override fun borrarCoordenada(point: LatLng, marker: Marker){
+        if(marker.position!=null){
+
+        }
     }
 }
